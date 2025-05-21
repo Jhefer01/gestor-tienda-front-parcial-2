@@ -1,6 +1,6 @@
 function users(page) {
     document.getElementById('cardHeader').innerHTML ='<h5>Listado de usuarios</h5>'
-    const REQRES_ENDPOINT = 'https://reqres.in/api/users?page='+page
+    const REQRES_ENDPOINT = 'https://api.escuelajs.co/api/v1/users'
     fetch(REQRES_ENDPOINT,  {
         method: 'GET',
         headers: {
@@ -25,19 +25,18 @@ function users(page) {
             <tr>
             <th scope="col">#</th>
             <th scope="col">Nombres</th>
-            <th scope="col">Apellido</th>
+            <th scope="col">correo electronico</th>
             <th scope="col">Avatar</th>
-             <th scope="col">Acción</th>
             </tr>
             </thead>
             <tbody>
             `
-            result.info.data.forEach(element => {
+            result.info.forEach(element => {
                 list_user=list_user+`
                 <tr>
                 <td>${element.id}</td>
-                <td>${element.first_name}</td>
-                <td>${element.last_name}</td>
+                <td>${element.name}</td>
+                <td>${element.email}</td>
                 <td><img src="${element.avatar}" class="img-thumbnail" alt="avatar del usuario"></td>
                 <td><button type="button" class="btn btn-info" onclick="getUser('${element.id}')">Ver</button></td>
                 `
@@ -69,7 +68,7 @@ function users(page) {
     })
 }
 function getUser(idUser) {
-    const REQRES_ENDPOINT = 'https://reqres.in/api/users/'+idUser
+    const REQRES_ENDPOINT = 'https://api.escuelajs.co/api/v1/users/'+idUser
     fetch(REQRES_ENDPOINT,  {
         method: 'GET',
         headers: {
@@ -89,7 +88,7 @@ function getUser(idUser) {
     })
     .then((response) =>{
         if(response.status === 200){
-            const user = response.body.data
+            const user = response.body
             const modalUser = `
             <!-- Modal -->
             <div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,8 +103,10 @@ function getUser(idUser) {
                 <img src="${user.avatar}" class="card-img-top" alt="Avatar del usuario">
                 <div class="card-body">
                     <h5 class="card-title">Informacion del usuario</h5>
-                    <p class="card-text">Nombre: ${user.first_name}</p>
-                    <p class="card-text">Apellido: ${user.last_name}</p>
+                    <p class="card-text">Nombre: ${user.name}</p>
+                    <p class="card-text">Correo Electronico: ${user.email}</p>
+                    <p class="card-text">Contrasena: ${user.password}</p>
+                    <p class="card-text">Rol: ${user.role}</p>
                 </div>
                 </div>
                 </div>
