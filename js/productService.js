@@ -1,6 +1,6 @@
 function products() {
     document.getElementById('cardHeader').innerHTML ='<h5>Listado de productos</h5>'
-    const REQRES_ENDPOINT = 'https://reqres.in/api/products?page=1'
+    const REQRES_ENDPOINT = 'https://api.escuelajs.co/api/v1/products'
     fetch(REQRES_ENDPOINT,  {
         method: 'GET',
         headers: {
@@ -23,23 +23,23 @@ function products() {
             let list_products = `<table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre del producto</th>
-                    <th scope="col">Año</th>
-                    <th scope="col">color</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Imagen</th>
                   </tr>
                 </thead>
-                <tbody>
+                <body>
             `
-            result.info.data.forEach(element => {
+            result.info.forEach(element => {
                 list_products=list_products+`
                 <tr>
                     <td>${element.id}</td>
-                    <td>${element.name}</td>
-                    <td>${element.year}</td>
-                    <td>${element.color}</td>
-                    <td><input type='color' value='${element.color}'></td>
+                    <td>${element.title}</td>
+                    <td>${element.price}</td>
+                    <td>${element.category.name}</td>
+                    <td><img src="${element.image}"class="img-thumbnail" alt="imagen del producto"></td>
                      <td><button type="button" class="btn btn-info" onclick="getProduct('${element.id}')">Ver</button></td>
                 `
             });
@@ -69,7 +69,7 @@ function products() {
         }
     })
 }function getProduct(idProduct) {
-    const REQRES_ENDPOINT = 'https://reqres.in/api/products/'+idProduct
+    const REQRES_ENDPOINT = 'https://api.escuelajs.co/api/v1/products/'+idProduct
     fetch(REQRES_ENDPOINT,  {
         method: 'GET',
         headers: {
@@ -89,7 +89,7 @@ function products() {
     })
     .then((response) =>{
         if(response.status === 200){
-            const product = response.body.data
+            const product = response.body
             const modalProduct = `
             <!-- Modal -->
             <div class="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,9 +103,9 @@ function products() {
                 <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Informacion del producto</h5>
-                    <p class="card-text">Nombre: ${product.name}</p>
-                    <p class="card-text">Año: ${product.year}</p>
-                    <p class="card-text">Color: ${product.color}</p>
+                    <p class="card-text">Nombre del pruducto: ${product.title}</p>
+                    <p class="card-text">precio: ${product.price}</p>
+                    <p class="card-text">Categoria: ${product.category.name}</p>
                 </div>
                 </div>
                 </div>
