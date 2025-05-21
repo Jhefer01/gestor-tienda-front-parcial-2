@@ -10,3 +10,5 @@ inicio de sesion exitoso con la API
 previsualizacion de productos
 ![detalles](https://github.com/user-attachments/assets/8cd0d48a-e54c-456c-90ba-08bf4f5a267e)
 detalles de cada producto por individual
+![listado de user](https://github.com/user-attachments/assets/4c67e62d-d2b7-4a16-ab39-76809b9b3491)
+Agregamos exitosamente la lista de usuarios con la API
