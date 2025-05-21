@@ -8,3 +8,5 @@ Inicio de sesion con la API fake de Platzi
 inicio de sesion exitoso con la API
 ![productos](https://github.com/user-attachments/assets/e8750eb9-2cdd-4676-9800-56b79d825ad1)
 previsualizacion de productos
+![detalles](https://github.com/user-attachments/assets/8cd0d48a-e54c-456c-90ba-08bf4f5a267e)
+detalles de cada producto por individual
