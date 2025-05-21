@@ -103,9 +103,11 @@ function products() {
                 <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Informacion del producto</h5>
-                    <p class="card-text">Nombre del pruducto: ${product.title}</p>
+                    <p class="card-text">Nombre del producto: ${product.title}</p>
                     <p class="card-text">precio: ${product.price}</p>
                     <p class="card-text">Categoria: ${product.category.name}</p>
+                    <p class="card-text">descripcion del producto: ${product.description}</p>
+                    <p class="card-text">identificador: ${product.slug}</p>
                 </div>
                 </div>
                 </div>
